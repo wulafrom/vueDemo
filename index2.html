@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="app">
+        {{message}}       {{b}}
+    </div>
+
+<script type="text/javascript">
+    var data = {message:1};
+    var app = new Vue({
+        el: '#app',
+        data: data
+    });
+    // data.message="hi.....new...";
+    app.message = "test";
+    app.message===data.message;
+
+</script>
+</body>
+</html>
