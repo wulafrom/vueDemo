@@ -6,16 +6,20 @@
     <script src="vue.js" type="text/javascript"></script>
 </head>
 <body>
-    <div id="app">
-        {{message}}
-    </div>
+<div id="app">
+    {{message}}
+    <span v-bind:title="title">
+			悬停时查看提示信息
+		</span>
+</div>
 
 <script type="text/javascript">
 
     const app = new Vue({
         el: '#app',
         data: {
-            message: 'hello vue'
+            message: 'hello vue',
+            title:'页面加载于'+new Date().toLocaleDateString()
         }
     });
 

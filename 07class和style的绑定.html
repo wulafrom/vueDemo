@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Title</title>
+		<script src="vue.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 是否绑定名为 active的class名称 -->
+
+			<!-- 动态绑定有多种形式-->
+			<!-- v-bind:class="{active:isActive,green:isGreen}" -->
+			<div class="test" v-bind:class="[ isActive ? 'active' : '',   isGreen ? 'green' : '']" style="width: 200px;height: 200px;text-align: center;line-height: 200px;">
+				hi vue
+			</div>
+
+			<!-- 动态取值赋值 -->
+			<div :style="{color:color,fontSize:size,background:isRed?'#C21D1D':''}">
+				hi vue2
+			</div>
+		</div>
+
+
+
+		<script type="text/javascript">
+			const app = new Vue({
+				el: '#app',
+				data: {
+					isActive: true,
+					isGreen: true,
+					color: "#ff5093",
+					size: '50px',
+					isRed: true
+				}
+			});
+		</script>
+
+		<style>
+			.active {
+				background: #1FC2C2;
+			}
+
+			.test {
+				background: #C21D1D;
+			}
+
+			.green {
+				background: green;
+			}
+		</style>
+	</body>
+</html>

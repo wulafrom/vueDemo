@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html  lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<div id="app">
+    <!-- 指令符以 v- 开始-->
+    <!-- v-if 标签可见状态-->
+    <p v-if="seen">现在是可见状态</p>
+    <!-- a标签的href的值-->
+    <a v-bind:href="url">.......</a>
+    <button v-bind:disabled="isButtonDisabled">Button</button>
+
+
+    <div @click="click1">
+        <div @click.stop="click2">
+            click me
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+
+    const app = new Vue({
+        el: '#app',
+        // 给变量设置值
+        data: {
+            seen: true,
+            url: "https://blog.csdn.net/zty1317313805/article/details/80061707",
+            isButtonDisabled: false
+        },
+        // 变量设置方法
+        methods: {
+            click1 : function () {
+                console.log('click1......');
+            },
+            click2 : function () {
+                console.log('click2......');
+            }
+        }
+    });
+
+</script>
+</body>
+</html>

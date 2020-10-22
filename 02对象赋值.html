@@ -6,19 +6,23 @@
     <script src="vue.js" type="text/javascript"></script>
 </head>
 <body>
-    <div id="app">
-        {{message}}       {{b}}
-    </div>
+<div id="app">
+    <!-- vue声明变量的形式  {{}} -->
+    {{message}} {{b}}
+</div>
 
 <script type="text/javascript">
-    var data = {message:1};
+    var data = {message: 1};
+    //通过new的形式，创建一个vue对象
     var app = new Vue({
+        //el 表示元素
         el: '#app',
+        //传递一个对象作为属性
         data: data
     });
     // data.message="hi.....new...";
     app.message = "test";
-    app.message===data.message;
+    app.message === data.message;
 
 </script>
 </body>
