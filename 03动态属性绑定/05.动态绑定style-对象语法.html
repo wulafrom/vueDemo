@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  {{message}}
+  <!--使用vue挂载dom,不加 引号的值 会被认为是变量-->
+  <h2 :style="{color: 'red',fontSize:'50px'}">{{message}}</h2>
+  <h2 :style="{color: 'red',fontSize:finalSize}">{{message}}</h2>
+  <h2 :style="{color: finalColor,fontSize: finalFontSize+'px'}">{{message}}</h2>
+  <h2 :style="getStyles()">{{message}}</h2>
+</div>
+<script src="../vue.js"></script>
+<script>
+  const vue = new Vue({
+    el: "#app",
+    data: {
+      message: '0',
+      finalSize: '88px',
+      finalFontSize: 99,
+      finalColor: 'blue'
+    },
+    methods: {
+      getStyles: function () {
+        return {color: this.finalColor,fontSize: this.finalFontSize+20+'px'}
+      }
+    }
+  })
+</script>
+</body>
+</html>
