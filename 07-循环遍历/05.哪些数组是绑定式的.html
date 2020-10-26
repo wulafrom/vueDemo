@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app" v-cloak>
+  <ul>
+    <!--增加 key 的原因是增加vue的识别,提升改变元素时候的效率-->
+    <li v-for="word in letters" :key="word">{{word}}</li>
+    <button @click="btnClick">响应式更改数组元素</button>
+  </ul>
+</div>
+<script src="../vue.js"></script>
+<script>
+  const vue = new Vue({
+    el: "#app",
+    data: {
+      letters: ['A', 'B', 'C', 'D']
+    }, methods: {
+      btnClick() {
+        //响应式的方法
+        //1.push 数组最后添加元素
+        this.letters.push('1');
+        //2.数组前面添加元素
+        this.letters.unshift('2', '3', '4');
+        //3.pop 删除数组最后一个元素
+        this.letters.pop();
+        //4.shift 删除数组第一个元素
+        this.letters.shift();
+
+        //5.splice 删除/插入/替换 元素
+        //删除 下标为1 元素后的所有元素
+        this.letters.splice(1);
+        //删除 下标为1 元素后的一个元素
+        this.letters.splice(1,1);
+        //替换 下标为1 元素后的两个元素
+        this.letters.splice(1, 2, 'aa', 'bb')
+        //在   下标为1 元素后插入元素
+        this.letters.splice(1, 0, 'cc', 'dd')
+
+        //6.排序 sort
+        this.letters.sort();
+        //7.逆序
+        this.letters.reverse();
+
+        //8.set 通过Vue的设置方法
+        Vue.set(this.letters, 0, 'bde');
+      }
+    }
+  })
+</script>
+
+</body>
+</html>

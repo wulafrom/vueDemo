@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  {{message}}
+  <!--1.拼接-->
+  <h2>{{firstName + lastName}}</h2>
+  <!--2.调用method-->
+  <h2>{{getFullName()}}</h2>
+  <h2>{{getFullName()}}</h2>
+  <h2>{{getFullName()}}</h2>
+  <h2>{{getFullName()}}</h2>
+  <!--3.通过computed-->
+  <h2>{{fullName}}</h2>
+  <h2>{{fullName}}</h2>
+  <h2>{{fullName}}</h2>
+  <h2>{{fullName}}</h2>
+</div>
+<script src="../vue.js"></script>
+<script>
+  const vue = new Vue({
+    el: "#app",
+    data: {
+      message: '0',
+      firstName: 'jone',
+      lastName: 'js'
+    },
+    //方法返回的都是临时变量，不会缓存
+    methods: {
+      getFullName() {
+        console.log('getFullName');
+        return this.firstName + ' ' + this.lastName;
+      }
+    },
+    //vue会进行缓存,保存到浏览器
+    computed: {
+      fullName: function () {
+        console.log('fullName');
+        return this.firstName + ' ' + this.lastName;
+      }
+    }
+  })
+</script>
+</body>
+</html>

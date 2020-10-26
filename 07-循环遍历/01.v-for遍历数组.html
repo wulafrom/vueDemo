@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  {{message}}
+  <ul>
+    <li v-for="(name,index) in names">{{index + 1 +' '+name}}</li>
+  </ul>
+</div>
+<script src="../vue.js"></script>
+<script>
+  const vue = new Vue({
+    el: "#app",
+    data: {
+      message: '0',
+      names: ['why', 'kobe', 'james', 'curry']
+    }
+  })
+</script>
+</body>
+</html>

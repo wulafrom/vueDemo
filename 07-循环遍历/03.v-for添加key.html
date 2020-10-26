@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app" v-cloak>
+  <ul>
+    <!--增加 key 的原因是增加vue的识别,提升改变元素时候的效率-->
+    <li v-for="word in letters" :key="word">{{word}}</li>
+  </ul>
+</div>
+<script src="../vue.js"></script>
+<script>
+  const vue = new Vue({
+    el: "#app",
+    data:{
+      letters:['A','B','C','D']
+    }
+  })
+</script>
+
+</body>
+</html>

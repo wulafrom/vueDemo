@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  {{counter}}
+  <button v-on:click="counter++">按钮加</button>
+  <button v-on:click="counter--">按钮减</button>
+  <button @click="increment()">语法糖 加</button>
+  <button @click="decrement()">语法糖 减</button>
+  <button @click="btnClick">语法糖 事件 默认传参 event对象(浏览器封装的)</button>
+  <button @click="btnClick($event)">语法糖 事件 显示传参 event</button>
+</div>
+<script src="../vue.js"></script>
+<script>
+  const vue = new Vue({
+    el: "#app",
+    data: {
+      message: '0',
+      counter: 0
+    },
+    methods: {
+      increment() {
+        this.counter++;
+      },
+      decrement() {
+        this.counter--;
+      },
+      btnClick(event) {
+        console.log(event);
+        console.log(this)
+      }
+    }
+  })
+</script>
+</body>
+</html>

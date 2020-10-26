@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app" v-cloak>
+  {{message}}
+  <!--1.使用v-if为false的时候，元素将不渲染，并将元素删除-->
+  <h2 v-if=isShow>{{message}}</h2>
+  <!--2.v-show为false的时候，为元素加上display: none;-->
+  <h2 v-show=isShow>{{message}}</h2>
+</div>
+<script src="../vue.js"></script>
+<script>
+  const vue = new Vue({
+    el: "#app",
+    data:{
+      message:'0',
+      isShow:true
+    }
+  })
+</script>
+</body>
+</html>
