@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  {{message}}
+  <!--v-bind 不支持驼峰 使用 - 进行连接-->
+  <cpn :cname="name" :cage="age"></cpn>
+</div>
+<script src="../vue.js"></script>
+<template id="cpn">
+  <div>
+    <p>{{cname}}</p>
+    <p>{{cage}}</p>
+  </div>
+</template>
+<script>
+  const cpn= {
+    template:`#cpn`,
+    // props用于接受父组件传递的数据 data是组件自定义的数据
+    props: {
+      cage:Number,
+      cname:String,
+    }
+  }
+
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: '0',
+      age:18,
+      name:'why'
+    },
+    components: {
+      cpn: cpn
+    }
+  });
+</script>
+</body>
+</html>

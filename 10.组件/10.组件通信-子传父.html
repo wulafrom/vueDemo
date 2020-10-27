@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  {{message}}
+  <!--dom元素等号的左边不支持 驼峰-->
+  <cpn @btn-click="btnClick"></cpn>
+</div>
+<script src="../vue.js"></script>
+<template id="cpn">
+  <div>
+    <button v-for="item in categories" @click="btnClick(item)" >{{item.name}}</button>
+  </div>
+</template>
+<script>
+  const cpn = {
+    template: `#cpn`,
+    data() {
+      return {
+        categories:[
+          {id:1,name: "热门推荐"},
+          {id:2,name: "家电"},
+          {id:3,name: "手机"},
+        ]
+      }
+    },
+    methods: {
+      btnClick(item) {
+        console.log(item);
+        //发射自定义事件
+        this.$emit('btn-click', item);
+      }
+    }
+  }
+
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: '0',
+      age: 18,
+      name: 'why'
+    },
+    components: {
+      cpn: cpn
+    },
+    methods: {
+      btnClick(item){
+        console.log('已经监听到');
+        console.log(item);
+      }
+    }
+  });
+</script>
+</body>
+</html>

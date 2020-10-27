@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <label>
+    <!--1.lazy属性，最后修改变量的值(敲回车)-->
+    <input type="text" v-model.lazy="message">{{message}}
+  </label>
+
+  <!--2.将输入的数据转换成数字类型-->
+  <label>
+    <input type="text" v-model.number="age">
+    {{age}} - {{typeof age}}
+  </label>
+
+  <!--3.trim修饰符，去除首尾的字符串空格-->
+  <label>
+    <input type="text" v-model.trim="text">
+    {{text+1}}
+  </label>
+
+</div>
+<script src="../vue.js"></script>
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: '0',
+      age:0,
+      text: ''
+    }
+  });
+</script>
+</body>
+</html>

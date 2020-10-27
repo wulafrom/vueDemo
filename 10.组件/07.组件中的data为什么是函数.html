@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  {{message}}
+  <cpn></cpn>
+  <cpn></cpn>
+  <cpn></cpn>
+</div>
+<script src="../vue.js"></script>
+<template id="cpnCode">
+  <div>
+    <h2>计数器</h2>
+    <h3>当前数据:counter {{counter}}</h3>
+    <h3>当前数据:a {{a}}</h3>
+    <button @click="increment()">+</button>
+    <button @click="decrement()">-</button>
+  </div>
+</template>
+<script>
+  const obj = {a:0}
+  let a =0;
+  Vue.component('cpn',{
+    template:cpnCode,
+    //使用函数，返回对象的时候，每一个都是局部变量
+    //使用对象的时候，生成的组件会共享同一个变量，会引起数据混乱
+    data(){
+      // 这种返回 都指向了obj这个对象  返回的是同一个对象才能共享数据
+      //return obj
+      return{
+        counter:0,
+        //这种方式其实还是创建的是临时的变量
+        a:a
+      }
+    },
+    methods:{
+      increment(){
+        this.counter++;
+        this.a++;
+      },
+      decrement(){
+        this.counter--;
+        this.a--;
+      }
+    }
+  })
+
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: '0'
+    }
+  });
+</script>
+</body>
+</html>

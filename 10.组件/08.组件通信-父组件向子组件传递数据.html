@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  {{message}}
+  <cpn :cmovies="movies" :cmessage="message"></cpn>
+</div>
+<script src="../vue.js"></script>
+<template id="templatecode">
+  <div>
+    <p>{{cmovies}}</p>
+    <p>{{cmessage}}</p>
+  </div>
+</template>
+<script>
+  const cpn = {
+    template: `#templatecode`,
+    //1.数组形式
+    // props:['cmovies','cmessage'],
+    props: {
+      //2.类型限制
+      cmovies2: Array,
+      cmessage2: String,
+      //3.对象形式，并设定默认值
+      cmessage: {
+        type: String,
+        //3.1 这里传递的是基本数据类型
+        default: 'abc',
+        //3.2父组件调用子组件的时候，必须传值
+        required: true
+      },
+      //4.当数据类型为对象或者数组的时候，默认值必须是函数
+      cmovies: {
+        type: Array,
+        default() {
+          return []
+        }
+      }
+    },
+    data() {
+      return {a: 0}
+    }
+  }
+
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: '0',
+      movies: ['海王', '莎士比亚', '炮兽', '西游记']
+    },
+    components: {
+      cpn
+    }
+  });
+</script>
+</body>
+</html>
