@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <cpn ref="cpnA"></cpn>
+</div>
+<script src="../vue.js"></script>
+<template id="cpn">
+  <div>
+    <p>子组件</p>
+    <button @click="btnClick()">按钮</button>
+    <button @click="btnClickRoot()">按钮Root</button>
+  </div>
+</template>
+
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: '好呀'
+    },
+    components: {
+      cpn:{
+        template: `#cpn`,
+        methods:{
+          //1.访问父组件 $parent
+          btnClick(){
+            console.log(this.$parent);
+            console.log(this.$parent.message);
+            console.log(this.$parent.showMessage());
+          },
+          //2.访问根组件 $root
+          btnClickRoot(){
+            console.log(this.$root);
+            console.log(this.$root.message);
+            console.log(this.$root.showMessage());
+          }
+        }
+      }
+    },
+    methods: {
+      showMessage(){
+        console.log('根节点 showMessage()');
+      }
+    }
+  });
+</script>
+</body>
+</html>

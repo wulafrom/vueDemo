@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <button @click="btnClick()">按钮</button>
+  <button @click="btnClickRef()">按钮btnClickRef</button>
+  <cpn ref="cpnA"></cpn>
+  <cpn></cpn>
+  <cpn></cpn>
+</div>
+<script src="../vue.js"></script>
+<template id="cpn">
+  <div>
+    <p>子组件</p>
+  </div>
+</template>
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: '好呀'
+    },
+    components: {
+      cpn:{
+        template: `#cpn`,
+        methods:{
+          showMessage(){
+            console.log('showMessage');
+          }
+        },
+        data(){
+          return {
+            name : 'cpn-name'
+          }
+        }
+      }
+    },
+    methods: {
+      //1.$children
+      btnClick(){
+        console.log(this.$children);
+        this.$children[0].showMessage();
+        for (let argument of this.$children) {
+          console.log(argument.name);
+          console.log(argument.showMessage());
+        }
+      },
+      //$refs 对象类型，后跟组件ref,进行引用
+      btnClickRef(){
+        let {cpnA} = this.$refs;
+        console.log(cpnA);
+        console.log(cpnA.name);
+        cpnA.showMessage();
+      }
+    }
+  });
+</script>
+</body>
+</html>

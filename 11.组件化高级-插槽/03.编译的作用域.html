@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+  <!-- isShow 属性写在Vue实例 app 中,所以在app的data属性中取值 -->
+  <cpn v-show="isShow"></cpn>
+</div>
+
+<script src="../vue.js"></script>
+<!--注意:template的外层 要包裹 div-->
+<template id="cpn">
+  <div>
+    <h2>组件cpn</h2>
+    <p>组件cpn</p>
+  </div>
+</template>
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: '0',
+      isShow: true
+    },
+    components: {
+      cpn: {
+        template: `#cpn`,
+        data() {
+          return {
+            isShow: true
+          }
+        }
+      }
+    }
+  });
+</script>
+</body>
+</html>
