@@ -24,17 +24,17 @@
       message: '好呀'
     },
     components: {
-      cpn:{
+      cpn: {
         template: `#cpn`,
-        methods:{
+        methods: {
           //1.访问父组件 $parent
-          btnClick(){
+          btnClick() {
             console.log(this.$parent);
             console.log(this.$parent.message);
             console.log(this.$parent.showMessage());
           },
           //2.访问根组件 $root
-          btnClickRoot(){
+          btnClickRoot() {
             console.log(this.$root);
             console.log(this.$root.message);
             console.log(this.$root.showMessage());
@@ -43,7 +43,7 @@
       }
     },
     methods: {
-      showMessage(){
+      showMessage() {
         console.log('根节点 showMessage()');
       }
     }
